@@ -9,7 +9,7 @@ function find() {
 function findArticle() {
   return db("articles as a")
   .select("article_id", "title", "preview",
-   "story", "category")
+   "story", "category", "url")
   .orderBy("article_id");
 }
 
@@ -29,7 +29,7 @@ const addUser = (user) =>{
 
 const addArticle = (article) =>{
   return db("articles").insert(article,["article_id", "title", "preview",
-  "story", "category"]);
+  "story", "category", "url"]);
 }
 
 function findById(id) {
@@ -41,7 +41,7 @@ function findById(id) {
 
 function findArticleById(id) {
     return db("articles as a")
-      .select("article_id", "title", "preview", "story", "category")
+      .select("article_id", "title", "preview", "story", "category", "url")
       .where("article_id", id)
       .first()
   }

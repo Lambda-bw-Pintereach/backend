@@ -39,8 +39,8 @@ router.get('/article/:id', (req, res, next) => {
 
 router.post('/article', (req, res, next) => {
 
-  const { title, preview, story, category } = req.body
-  User.addArticle({ title, preview, story, category  })
+  const { title, preview, story, category, url } = req.body
+  User.addArticle({ title, preview, story, category, url })
     .then(newArticle => {
       res.status(201).json(newArticle);
     })

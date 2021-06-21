@@ -10,9 +10,10 @@ exports.up = async (knex) => {
     .createTable('articles', (articles) => {
       articles.increments('article_id')
       articles.string('title', 200).notNullable()
-      articles.string('preview', 500).notNullable()
-      articles.string('story', 1000).notNullable()
+      articles.string('preview', 1000).notNullable()
+      articles.string('story', 5000).notNullable()
       articles.string('category', 200).notNullable()
+      articles.string('url', 280)
       articles.timestamps(false, true)
     })
 }
