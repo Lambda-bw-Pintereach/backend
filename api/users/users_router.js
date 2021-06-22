@@ -13,13 +13,18 @@ router.get('/users', (req, res, next) => {
     .catch(next); 
 });
 
-router.get('/user/:id', (req, res, next) => {
-  helpers.findById(res.params.id)
-    .then(users => {
-      res.status(200).json(users)
+router.get('/user/:id', (req, res) => {
+    const id = req.params.id 
+    User.findById(id)
+    .then(user => {
+        res.json(user);
     })
-    .catch(next); 
-});
+    .catch(err => res.status(500).json({ 
+        message: err.message, 
+        stack: err.stack 
+    }))
+  });
+  
 
 router.get('/articles', (req, res, next) => {
   helpers.findArticle()
@@ -29,12 +34,16 @@ router.get('/articles', (req, res, next) => {
     .catch(next); 
 });
 
-router.get('/article/:id', (req, res, next) => {
-    helpers.findById(res.params.article_id)
-      .then(article => {
-        res.status(200).json(article)
-      })
-      .catch(next); 
+router.get('/article/:id', (req, res) => {
+    const article_id = req.params.id 
+    User.findArticleById(article_id)
+    .then(article => {
+        res.json(article);
+    })
+    .catch(err => res.status(500).json({ 
+        message: err.message, 
+        stack: err.stack 
+    }))
   });
 
 router.post('/article', (req, res, next) => {

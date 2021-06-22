@@ -35,14 +35,14 @@ const addArticle = (article) =>{
 function findById(id) {
   return db("users as u")
     .select("id", "username", "password")
-    .where("id", id)
+    .where({id})
     .first()
 }
 
-function findArticleById(id) {
+function findArticleById(article_id) {
     return db("articles as a")
       .select("article_id", "title", "preview", "story", "category", "url")
-      .where("article_id", id)
+      .where({article_id})
       .first()
   }
 
