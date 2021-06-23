@@ -44,7 +44,7 @@ router.get('/article/:id', (req, res) => {
         message: err.message, 
         stack: err.stack 
     }))
-  });
+});
 
 router.post('/article', (req, res, next) => {
 
@@ -55,5 +55,18 @@ router.post('/article', (req, res, next) => {
     })
     .catch(next);
 })
+
+router.delete("/article/:id", (req, res, next) => {
+    const article_id = req.params.id 
+    User.deleteArticle(article_id)
+      .then((count) => {
+        if (count > 0) {
+          res.status(204).end();
+        } else {
+          res.status(404).json({ message: "article not found" });
+        }
+      })
+      .catch(next);
+  });
 
 module.exports = router

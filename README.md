@@ -46,7 +46,7 @@
     -  "id": 1,
     -   "username": "seye",
     -  "password": "$2a$08$Sl8VMI4G6Lt1Z/GLi3jaU.IYbOh6r9A2TtbGItCMIbDQbwFXAY2k."
-   - }
+  - }
  
 
 ## Article
@@ -84,4 +84,5 @@
    -   "category": "fashion"
   -  }
 
+**DELETE/api/article/:id**
 

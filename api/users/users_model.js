@@ -46,6 +46,13 @@ function findArticleById(article_id) {
       .first()
   }
 
+function deleteArticle(article_id) {
+    return db("articles as a")
+        .select("article_id", "title", "preview", "story", "category", "url")
+        .where({article_id})
+        .delete()
+  }
+
 module.exports = {
   find,
   findArticle,
@@ -54,5 +61,6 @@ module.exports = {
   findBy,
   findArticleBy,
   findById,
-  findArticleById
+  findArticleById,
+  deleteArticle
 }
